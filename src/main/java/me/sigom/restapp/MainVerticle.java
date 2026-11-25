@@ -9,6 +9,7 @@ import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,13 +38,14 @@ public class MainVerticle extends AbstractVerticle {
         response.putHeader("Content-Type", "text/html");
 
         // Send HTML content as the response
-        response.end("<html><body><h1>Vert.x v1.0 application!, if you see this triggers is working</h1></body></html>");
+        response.end("<html><body><h1>Vert.x v1.0 application!, if you see this triggers is working yeahh!!</h1></body></html>");
     }
 
     private void checkHealth(RoutingContext ctx) {
         JsonObject item = new JsonObject();
         item.put("status", "healthy");
-        item.put("healthy", items.size());
+        item.put("today", LocalDate.now());
+        item.put("healthy", 2);
         items.add(item);
         ctx.response()
                 .putHeader("content-type", "application/json")
